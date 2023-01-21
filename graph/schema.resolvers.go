@@ -13,22 +13,56 @@ import (
 
 // CreateMovie is the resolver for the createMovie field.
 func (r *mutationResolver) CreateMovie(ctx context.Context, input model.NewMovie) (*model.Movie, error) {
-	panic(fmt.Errorf("not implemented: CreateMovie - createMovie"))
+	movie := model.Movie{
+		Title: input.Title,
+		URL:   input.URL,
+	}
+
+	_, err := r.DB.Model(&movie).Insert()
+	if err != nil {
+		return nil, fmt.Errorf("error inserting new movie: %v", err)
+	}
+
+	return &movie, nil
 }
 
 // CreateGame is the resolver for the createGame field.
 func (r *mutationResolver) CreateGame(ctx context.Context, input model.NewGame) (*model.Game, error) {
-	panic(fmt.Errorf("not implemented: CreateGame - createGame"))
+	game := model.Game{
+		Title: input.Title,
+		URL:   input.URL,
+	}
+
+	_, err := r.DB.Model(&game).Insert()
+	if err != nil {
+		return nil, fmt.Errorf("error inserting new movie: %v", err)
+	}
+
+	return &game, nil
 }
 
 // Movies is the resolver for the movies field.
 func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
-	panic(fmt.Errorf("not implemented: Movies - movies"))
+	var movies []*model.Movie
+
+	err := r.DB.Model(&movies).Select()
+	if err != nil {
+		return nil, err
+	}
+
+	return movies, nil
 }
 
 // Games is the resolver for the games field.
 func (r *queryResolver) Games(ctx context.Context) ([]*model.Game, error) {
-	panic(fmt.Errorf("not implemented: Games - games"))
+	var games []*model.Game
+
+	err := r.DB.Model(&games).Select()
+	if err != nil {
+		return nil, err
+	}
+
+	return games, nil
 }
 
 // Mutation returns MutationResolver implementation.
