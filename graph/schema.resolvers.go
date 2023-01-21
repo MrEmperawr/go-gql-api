@@ -16,9 +16,19 @@ func (r *mutationResolver) CreateMovie(ctx context.Context, input model.NewMovie
 	panic(fmt.Errorf("not implemented: CreateMovie - createMovie"))
 }
 
+// CreateGame is the resolver for the createGame field.
+func (r *mutationResolver) CreateGame(ctx context.Context, input model.NewGame) (*model.Game, error) {
+	panic(fmt.Errorf("not implemented: CreateGame - createGame"))
+}
+
 // Movies is the resolver for the movies field.
 func (r *queryResolver) Movies(ctx context.Context) ([]*model.Movie, error) {
 	panic(fmt.Errorf("not implemented: Movies - movies"))
+}
+
+// Games is the resolver for the games field.
+func (r *queryResolver) Games(ctx context.Context) ([]*model.Game, error) {
+	panic(fmt.Errorf("not implemented: Games - games"))
 }
 
 // Mutation returns MutationResolver implementation.

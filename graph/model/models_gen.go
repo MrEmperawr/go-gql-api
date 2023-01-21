@@ -2,11 +2,28 @@
 
 package model
 
+type Game struct {
+	ID              string  `json:"id"`
+	Title           string  `json:"title"`
+	URL             string  `json:"url"`
+	ReleaseDate     string  `json:"releaseDate"`
+	Description     string  `json:"description"`
+	MetaCriticScore float64 `json:"metaCriticScore"`
+}
+
 type Movie struct {
-	ID          string `json:"id"`
-	Title       string `json:"title"`
-	URL         string `json:"url"`
-	ReleaseDate string `json:"releaseDate"`
+	ID                  string  `json:"id"`
+	Title               string  `json:"title"`
+	URL                 string  `json:"url"`
+	Synposis            string  `json:"synposis"`
+	ReleaseDate         string  `json:"releaseDate"`
+	ImdbScore           float64 `json:"imdbScore"`
+	RottenTomatoesScore float64 `json:"rottenTomatoesScore"`
+}
+
+type NewGame struct {
+	Title string `json:"title"`
+	URL   string `json:"url"`
 }
 
 type NewMovie struct {

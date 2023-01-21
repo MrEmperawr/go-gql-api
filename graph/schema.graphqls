@@ -6,11 +6,10 @@ type Movie {
  id: ID!
  title: String!
  url: String!
+ synposis: String!
  releaseDate: String!
-}
-
-type Query {
- movies: [Movie!]!
+ imdbScore: Float!
+ rottenTomatoesScore: Float!
 }
 
 input NewMovie {
@@ -18,6 +17,27 @@ input NewMovie {
  url: String!
 }
 
+type Game {
+ id: ID!
+ title: String!
+ url: String!
+ releaseDate: String!
+ description: String!
+ metaCriticScore: Float!
+}
+
+input NewGame {
+ title: String!
+ url: String!
+}
+
+type Query {
+ movies: [Movie!]!
+ games: [Game!]!
+}
+
 type Mutation {
  createMovie(input: NewMovie!): Movie!
+ createGame(input: NewGame!): Game!
 }
+
